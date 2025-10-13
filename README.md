@@ -7,7 +7,7 @@ Skrypt **`yt.py`** automatycznie:
 4) składa pionowe wideo 1080×1920 z word-by-word „karaoke” na tle losowych klipów,  
 5) **uploaduje** wynik na YouTube (Shorts).
 ---
-#Lista pakietów użytch w projekcie:
+## Lista pakietów użytch w projekcie:
 
 1) Reddit → TTS → „karaoke” wideo → YouTube
 2) python-dotenv — konfiguracja z .env.
@@ -22,51 +22,6 @@ Skrypt **`yt.py`** automatycznie:
 Zewnętrzne narzędzia (binaria)
 1) FFmpeg — wymagane do renderu wideo/audio (MoviePy/pydub).
 2) ImageMagick — generowanie napisów/warstw (używane przez MoviePy; na Windows wskazana ścieżka do magick.exe).
----
-
-## Wymagania
-
-### System / binaria
-- **Python 3.10+**  
-- **FFmpeg** w systemie (wymagane przez MoviePy)  
-- **ImageMagick** – na Windows ścieżka ustawiona w skrypcie, np.:
-  ```py
-  os.environ["IMAGEMAGICK_BINARY"] = r"C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe"
-  ``` 
-  Jeśli masz inną wersję/ścieżkę, zaktualizuj ją w `yt.py`.
-
-### Pakiety Pythona
-```bash
-pip install python-dotenv praw moviepy imageio-ffmpeg assemblyai TTS requests             google-api-python-client google-auth-oauthlib pydub
-```
-*(MoviePy pociągnie `imageio-ffmpeg`; `pydub` używa lokalnego ffmpeg.)*
-
----
-
-## Klucze/API & pliki tajne
-
-Utwórz plik **`.env`** (nie commituj) z danymi do Reddit i AssemblyAI:
-```env
-REDDIT_CLIENT_ID=xxx
-REDDIT_CLIENT_SECRET=xxx
-REDDIT_USER_AGENT=your-app-name/1.0
-ASSEMBLYAI_API_KEY=xxx
-```
-Skrypt ładuje je przez `dotenv`.
-
-**YouTube Data API (upload):**
-- Plik **`secret_yt.json`** (OAuth Client „Desktop”) w katalogu projektu.  
-- Przy pierwszym uruchomieniu powstanie **`token.pickle`** (autoryzacja w przeglądarce).  
-- Zakres uprawnień: `https://www.googleapis.com/auth/youtube.upload`.
-
-> Uwaga: `secret_yt.json` i `token.pickle` trzymaj **lokalnie** (dodaj do `.gitignore`).
-
----
-
-## Dane wejściowe (foldery)
-
-- **`backgrounds/`** – pionowe/poziome **.mp4** z tłem do wideo. Skrypt wybiera losowe klipy i składa je do docelowego czasu.  
-- Skrypt sam utworzy: **`audio/`** i **`videos/`**.
 
 ---
 
@@ -101,12 +56,3 @@ Skrypt ładuje je przez `dotenv`.
 
 ---
 
-
-**Parametry/zmiany w kodzie (szybko):**
-- Lista subredditów → `subreddits = [...]`  
-- Limit postów na sub → `fetch_stories(limit_per_sub=5)`  
-- Graniczna długość fragmentu → `split_text(..., max_words=240)`  
-- Maksymalny czas klipu → `target_duration = min(audio, 60.0)` w `create_karaoke_video`.
-
-
----
