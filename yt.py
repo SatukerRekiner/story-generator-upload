@@ -130,20 +130,8 @@ def fetch_stories(limit_per_sub=5):
 #tts = TTS(model_name="tts_models/en/ljspeech/tacotron2-DDC")
 #tts = TTS(model_name="tts_models/en/vctk/vits")
 #tts = TTS(model_name="tts_models/en/ek1/tacotron2")
-# tts = TTS(model_name="tts_models/en/ljspeech/glow-tts")
+# tts = TTS(model_name="tts_models/en/ljspeech/glow-tts")        to są różne przykładowe inne głosy
 tts = TTS(model_name="tts_models/en/jenny/jenny")
-
-# def generate_audio(text, filename):
-#     os.makedirs("audio", exist_ok=True)
-#     path = os.path.join("audio", filename + ".wav")
-#     if os.path.exists(path):
-#         print(f"[✓] Audio już istnieje: {path}")
-#         return path
-#
-#     print(f"[+] Generowanie audio (Coqui TTS): {filename}")
-#     tts.tts_to_file(text=text, file_path=path)
-#     return path
-
 
 def generate_audio(text, filename, speedup_factor=1.3):
     os.makedirs("audio", exist_ok=True)
@@ -201,7 +189,7 @@ def create_karaoke_video(text, audio_path, backgrounds_folder, filename, words_t
     #     TextClip(story_title, fontsize=75, color='white', font='Arial-Bold', size=(900, None), method='caption', align='center')
     #     .set_duration(target_duration)
     #     .set_position(("center", 55))
-    # )
+    # )   w tej wersji akurat wyłączyłem tutuł posta bo lepiej wygląda bez, ale no jak ktoś chce to można
 
     # === [2] Numer części (jeśli > 1) ===
     if part_number > 1:
@@ -356,4 +344,5 @@ if __name__ == "__main__":
                 tags=["reddit", "shorts", "AI", "story", "voiceover"]
             )
             time.sleep(100)
+
 
