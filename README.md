@@ -1,4 +1,5 @@
 # Reddit → TTS → „karaoke” wideo → YouTube (Shorts)
+Skrypt generuje i uploaduje na youtube krótkie filmiki w formie shorts na podstawie viralowych historii z reddita, można go oczywiście dostosować żeby postował też na innych platformach
 
 Skrypt **`yt.py`** automatycznie:
 1) pobiera dłuższe wpisy z wybranych subredditów,  
