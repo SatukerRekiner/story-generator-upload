@@ -7,6 +7,21 @@ Skrypt **`yt.py`** automatycznie:
 4) składa pionowe wideo 1080×1920 z word-by-word „karaoke” na tle losowych klipów,  
 5) **uploaduje** wynik na YouTube (Shorts).
 
+Lista pakietów użytch w projekcie:
+
+Reddit → TTS → „karaoke” wideo → YouTube
+python-dotenv — konfiguracja z .env.
+praw — Reddit API (pobieranie postów).
+TTS (Coqui TTS) — generowanie mowy z tekstu.
+pydub — obróbka/tempo audio.
+assemblyai — transkrypcja i znaczniki słów (word timestamps).
+moviepy + imageio-ffmpeg — montaż wideo, render MP4 (Shorts).
+requests — pomocnicze zapytania HTTP.
+google-api-python-client, google-auth-oauthlib — YouTube Data API (upload).
+
+Zewnętrzne narzędzia (binaria)
+FFmpeg — wymagane do renderu wideo/audio (MoviePy/pydub).
+ImageMagick — generowanie napisów/warstw (używane przez MoviePy; na Windows wskazana ścieżka do magick.exe).
 ---
 
 ## Wymagania
@@ -55,10 +70,10 @@ Skrypt ładuje je przez `dotenv`.
 
 ---
 
-## Jak to działa – pipeline
+## Jak to działa
 
 1) **Pobranie historii z Reddita**  
-   - Subreddity: `["AmItheAsshole","TalesFromRetail","confession","ProRevenge"]` (lista w kodzie).  
+   - Subreddity: `["AmItheAsshole","TalesFromRetail","confession","ProRevenge"]` (lista w kodzie, można bez problemu wybrać inne to tylko przykłady).  
    - Bierzemy **hot** z każdego suba (limit na sub konfigurowalny parametrem `limit_per_sub` w kodzie),  
    - pomijamy stickied, filtrujemy teksty **≥ 30 słów**.
 
@@ -86,16 +101,6 @@ Skrypt ładuje je przez `dotenv`.
 
 ---
 
-## Uruchomienie
-
-```bash
-# 1) Zainstaluj zależności (patrz wyżej) + miej FFmpeg & ImageMagick
-# 2) Dodaj .env z kluczami (Reddit + AssemblyAI)
-# 3) Umieść sekrety YouTube: secret_yt.json (Desktop OAuth) – token.pickle utworzy się sam
-# 4) Dodaj tła .mp4 do ./backgrounds
-
-python yt.py
-```
 
 **Parametry/zmiany w kodzie (szybko):**
 - Lista subredditów → `subreddits = [...]`  
@@ -103,42 +108,5 @@ python yt.py
 - Graniczna długość fragmentu → `split_text(..., max_words=240)`  
 - Maksymalny czas klipu → `target_duration = min(audio, 60.0)` w `create_karaoke_video`.
 
----
-
-## Struktura (po pierwszym przebiegu)
-```
-.
-├─ backgrounds/          # Twoje tła .mp4
-├─ audio/                # wav + wersje przyspieszone (cache)
-├─ videos/               # gotowe mp4 (Shorts)
-├─ secret_yt.json        # OAuth (lokalnie)
-├─ token.pickle          # token YouTube (lokalnie)
-├─ .env                  # klucze API (lokalnie)
-└─ yt.py
-```
-*(Pliki tajne trzymaj lokalnie; nie commituj.)*
 
 ---
-
-## Notatki techniczne
-
-- **Lazy cache audio** – jeśli istnieje wersja przyspieszona, TTS jest pomijany (oszczędność czasu).  
-- **Czcionka** – `TextClip` używa zdefiniowanej nazwy (np. `Impact`). Upewnij się, że font jest w systemie; w razie błędu zmień na dostępny (`Arial-Bold`, `DejaVu Sans`).  
-- **Nieużywana pomocnicza funkcja** `upload_audio_to_assemblyai` – w kodzie jest alternatywa uploadu przez REST; aktualna ścieżka korzysta ze **SDK**.
-
----
-
-## Bezpieczeństwo & zgodność
-
-- **Sekrety lokalnie**: `.env`, `secret_yt.json`, `token.pickle` — **nie commituj** do repo.  
-- **Prawa do treści**: publikowanie cudzych historii/głosów/tła może podlegać prawom autorskim/regulaminom (Reddit API / zasady subreddita / YouTube). To nie jest porada prawna; twórz **własne treści** lub trzymaj się zasad licencji/zgód.  
-- **Limity/koszty**: API AssemblyAI i YouTube mają limity/rozliczenia — obserwuj użycie.  
-- **Tryb testowy**: rozważ tryb **DRY_RUN** (ENV/flaga), by pominąć upload podczas testów.
-
----
-
-## Pomysły na rozbudowę
-- Flaga `--dry-run` (bez uploadu), `--limit` postów, `--max-duration` (np. 30–45 s).  
-- Auto-skróty (TL;DR) lub stress-timingi (przyspieszenie w ciszy).  
-- Szablony wyglądu (kolor/pozycja/animacja słów), watermark, miniatury.  
-- Kolejka uploadów z kontrolą quota.
