@@ -6,22 +6,22 @@ Skrypt **`yt.py`** automatycznie:
 3) uzyskuje **timestampy słów** (word-level) z AssemblyAI,  
 4) składa pionowe wideo 1080×1920 z word-by-word „karaoke” na tle losowych klipów,  
 5) **uploaduje** wynik na YouTube (Shorts).
+---
+#Lista pakietów użytch w projekcie:
 
-Lista pakietów użytch w projekcie:
-
-Reddit → TTS → „karaoke” wideo → YouTube
-python-dotenv — konfiguracja z .env.
-praw — Reddit API (pobieranie postów).
-TTS (Coqui TTS) — generowanie mowy z tekstu.
-pydub — obróbka/tempo audio.
-assemblyai — transkrypcja i znaczniki słów (word timestamps).
-moviepy + imageio-ffmpeg — montaż wideo, render MP4 (Shorts).
-requests — pomocnicze zapytania HTTP.
-google-api-python-client, google-auth-oauthlib — YouTube Data API (upload).
+1) Reddit → TTS → „karaoke” wideo → YouTube
+2) python-dotenv — konfiguracja z .env.
+3) praw — Reddit API (pobieranie postów).
+4) TTS (Coqui TTS) — generowanie mowy z tekstu.
+5) pydub — obróbka/tempo audio.
+6) assemblyai — transkrypcja i znaczniki słów (word timestamps).
+7) moviepy + imageio-ffmpeg — montaż wideo, render MP4 (Shorts).
+8) requests — pomocnicze zapytania HTTP.
+9) google-api-python-client, google-auth-oauthlib — YouTube Data API (upload).
 
 Zewnętrzne narzędzia (binaria)
-FFmpeg — wymagane do renderu wideo/audio (MoviePy/pydub).
-ImageMagick — generowanie napisów/warstw (używane przez MoviePy; na Windows wskazana ścieżka do magick.exe).
+1) FFmpeg — wymagane do renderu wideo/audio (MoviePy/pydub).
+2) ImageMagick — generowanie napisów/warstw (używane przez MoviePy; na Windows wskazana ścieżka do magick.exe).
 ---
 
 ## Wymagania
