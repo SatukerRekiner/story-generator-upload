@@ -59,3 +59,4 @@ Zewnętrzne narzędzia (binaria)
 ## Demo (wideo)
 
 [▶️ Obejrzyj demo (MP4)](https://github.com/SatukerRekiner/story-generator-upload/releases/download/1/demo.mp4)
+jest to jeden z filmików wygenerowany przy jednej z wersji tego projektu
