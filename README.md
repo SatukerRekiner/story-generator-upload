@@ -59,6 +59,5 @@ Zewnętrzne narzędzia (binaria)
 [▶️ Obejrzyj demo (MP4)](https://raw.githubusercontent.com/SatukerRekiner/story-generator-upload/main/demo.mp4)
 
 
-
-[Obejrzyj demo (MP4)](https://raw.githubusercontent.com/SatukerRekiner/story-generator-upload/main/demo.mp4)
+[▶️ Obejrzyj demo (MP4)](https://raw.githubusercontent.com/SatukerRekiner/story-generator-upload/blob/main/demo.mp4)
 
