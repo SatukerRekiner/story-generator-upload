@@ -68,4 +68,5 @@ Zewnętrzne narzędzia (binaria)
   <a href="demo.mp4">Pobierz demo.mp4</a>
 </video>
 
+[Obejrzyj demo (MP4)](https://raw.githubusercontent.com/SatukerRekiner/story-generator-upload/main/demo.mp4)
 
