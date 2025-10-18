@@ -56,7 +56,6 @@ Zewnętrzne narzędzia (binaria)
    - Po wgraniu log: `Uploaded to YouTube: https://youtu.be/<id>`.
 
 ---
+## Demo (wideo)
 
-
-
-(https://github.com/user-attachments/assets/686642aa-4896-4087-b49b-83988008e56b)
+[▶️ Obejrzyj demo (MP4)](https://github.com/SatukerRekiner/story-generator-upload/releases/download/1/demo.mp4)
