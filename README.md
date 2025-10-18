@@ -56,17 +56,9 @@ Zewnętrzne narzędzia (binaria)
    - Po wgraniu log: `Uploaded to YouTube: https://youtu.be/<id>`.
 
 ---
+[▶️ Obejrzyj demo (MP4)](https://raw.githubusercontent.com/SatukerRekiner/story-generator-upload/main/demo.mp4)
 
-<h3>Demo (wideo)</h3>
-<video src="demo.mp4"
-       controls
-       muted
-       playsinline
-       loop
-       style="max-width:100%;height:auto;">
-  Twój browser nie wspiera wideo HTML5.
-  <a href="demo.mp4">Pobierz demo.mp4</a>
-</video>
+
 
 [Obejrzyj demo (MP4)](https://raw.githubusercontent.com/SatukerRekiner/story-generator-upload/main/demo.mp4)
 
