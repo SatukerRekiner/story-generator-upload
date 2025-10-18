@@ -57,3 +57,5 @@ Zewnętrzne narzędzia (binaria)
 
 ---
 
+[![Zobacz demo](media/demo_poster.png)](demo.mp4)
+
